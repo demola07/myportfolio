@@ -31,7 +31,7 @@ class Projects extends Component {
                 color: "black",
                 height: "176px",
                 background:
-                  "url(https://cdn.auth0.com/blog/react-js/react.png) center / cover"
+                  "url(https://cdn.auth0.com/blog/react-js/react.png) center / cover "
               }}
             >
               React Project
@@ -101,7 +101,7 @@ class Projects extends Component {
     } else if (this.state.activeTab === 1) {
       return (
         <div>
-          <h1>This is Vailla Javascript</h1>
+          <h1>Vailla Javascript Projects</h1>
         </div>
       );
     }
