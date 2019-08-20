@@ -163,6 +163,31 @@
   color: white;
   background: black;
 }
+.contact-render1 {
+  background: green;
+  width: 60%;
+  height: 7%;
+  border-radius: 5px;
+  color: white;
+  font-size: 15px;
+  /* justify-content: center; */
+  /* text-align: center; */
+  margin: 0 auto;
+  margin-top: 15px;
+}
+.contact-render2 {
+  background: red;
+  width: 60%;
+  height: 7%;
+  border-radius: 5px;
+  color: white;
+  font-size: 15px;
+  /* justify-content: center; */
+  /* text-align: center; */
+  margin: 0 auto;
+  margin-top: 15px;
+}
+
 .aboutme-page {
   width: 100%;
   height: 90%;

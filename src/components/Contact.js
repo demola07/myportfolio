@@ -6,7 +6,11 @@ import {
   ListItem,
   List,
   Textfield,
-  Button
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions
 } from "react-mdl";
 
 class Contact extends Component {
@@ -21,7 +25,7 @@ class Contact extends Component {
       },
       status: {
         success: false,
-        fail: false
+        fail: true
       },
       responseMessage: ""
     };
@@ -30,12 +34,12 @@ class Contact extends Component {
   }
   handleChange = event => {
     let msgs = this.state.msg;
-    msgs[event.target.id] = event.target.value;
+    msgs[event.target.name] = event.target.value;
 
     this.setState({
       msg: msgs
     });
-    console.log(this.state);
+    // console.log(this.state);
     console.log(this.state.msg);
   };
 
@@ -109,10 +113,11 @@ class Contact extends Component {
           <Cell col={6}>
             <h2>Send me a message: </h2>
             <hr />
-            <form>
+            <form onSubmit={this.handleSubmit}>
               <Textfield
                 onChange={this.handleChange}
                 value={this.state.msg.name}
+                name="name"
                 label="Name"
                 floatingLabel
                 style={{ width: "400px" }}
@@ -121,6 +126,7 @@ class Contact extends Component {
               <Textfield
                 onChange={this.handleChange}
                 value={this.state.msg.email}
+                name="email"
                 label="Email"
                 floatingLabel
                 style={{ width: "400px" }}
@@ -129,6 +135,7 @@ class Contact extends Component {
               <Textfield
                 onChange={this.handleChange}
                 value={this.state.msg.message}
+                name="message"
                 label="Message"
                 rows={3}
                 style={{ width: "400px" }}
@@ -138,6 +145,16 @@ class Contact extends Component {
                 Send
               </Button>
             </form>
+            {this.state.status.success && (
+              <div className="contact-render1">
+                <p>Thank you!!! I will get back to you soon.</p>.
+              </div>
+            )}
+            {this.state.status.fail && (
+              <div className="contact-render2">
+                <p>Oops!!!{this.state.responseMessage} </p>.
+              </div>
+            )}
           </Cell>
         </Grid>
       </div>
