@@ -6,12 +6,9 @@ import {
   ListItem,
   List,
   Textfield,
-  Button,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions
+  Button
 } from "react-mdl";
+import Axios from "axios";
 
 class Contact extends Component {
   constructor(props) {
@@ -25,7 +22,7 @@ class Contact extends Component {
       },
       status: {
         success: false,
-        fail: true
+        fail: false
       },
       responseMessage: ""
     };
@@ -45,6 +42,44 @@ class Contact extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    Axios.post("http://localhost:6060/api/form", this.state.msg)
+      .then(res => {
+        const data = res.data;
+        console.log(data);
+
+        if (data.status) {
+          this.setState({
+            status: {
+              success: true
+            }
+          });
+        } else if (!data.status) {
+          this.setState({
+            status: {
+              fail: true
+            },
+            responseMessage: data.error
+          });
+        } else {
+          alert("Error");
+        }
+        setTimeout(() => {
+          this.setState({
+            msg: {
+              name: "",
+              email: "",
+              message: ""
+            },
+            status: {
+              success: false,
+              fail: false
+            }
+          });
+        }, 3000);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 
   render() {
@@ -152,7 +187,7 @@ class Contact extends Component {
             )}
             {this.state.status.fail && (
               <div className="contact-render2">
-                <p>Oops!!!{this.state.responseMessage} </p>.
+                <p>Oops!!!....{this.state.responseMessage} </p>.
               </div>
             )}
           </Cell>

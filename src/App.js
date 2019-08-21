@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import { Layout, Header, Navigation, Drawer, Content } from "react-mdl";
 import Main from "./components/main";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 function App() {
   return (
@@ -26,9 +26,24 @@ function App() {
           scroll
         >
           <Navigation>
-            <Link to="/aboutme">About Me</Link>
-            <Link to="/projects">Projects</Link>
-            <Link to="/contact">Contact</Link>
+            <NavLink
+              to="/aboutme"
+              activeStyle={{ color: "black", fontSize: "20px" }}
+            >
+              About Me
+            </NavLink>
+            <NavLink
+              to="/projects"
+              activeStyle={{ color: "black", fontSize: "20px" }}
+            >
+              Projects
+            </NavLink>
+            <NavLink
+              to="/contact"
+              activeStyle={{ color: "black", fontSize: "20px" }}
+            >
+              Contact
+            </NavLink>
           </Navigation>
         </Header>
         <Drawer
@@ -39,9 +54,24 @@ function App() {
           }
         >
           <Navigation>
-            <Link to="/aboutme">About Me</Link>
-            <Link to="/projects">Projects</Link>
-            <Link to="/contact">Contact</Link>
+            <NavLink
+              to="/aboutme"
+              activeStyle={{ color: "black", fontSize: "20px" }}
+            >
+              About Me
+            </NavLink>
+            <NavLink
+              to="/projects"
+              activeStyle={{ color: "black", fontSize: "20px" }}
+            >
+              Projects
+            </NavLink>
+            <NavLink
+              to="/contact"
+              activeStyle={{ color: "black", fontSize: "20px" }}
+            >
+              Contact
+            </NavLink>
           </Navigation>
         </Drawer>
         <Content>
